@@ -57,14 +57,6 @@ class LinkedListItem
     end
   end
 
-  def == (item)
-    if self.payload == item.payload
-      true
-    else
-      false
-    end
-  end
-
   def === (item)
     self.object_id === item.object_id
   end
