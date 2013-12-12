@@ -1,5 +1,6 @@
+
 class LinkedListItem
-  # include Comparable
+  include Comparable
 
   @@count = 0
   def initialize(word)
@@ -32,12 +33,39 @@ class LinkedListItem
     end
   end
 
-  def > (item)
-    item
+  def <=> (item)
+    if self.payload.class != item.payload.class
+      sc = self.payload.class
+      ic = item.payload.class
+      if sc == Symbol
+        sz = 3
+      elsif sc == String
+        sz = 2
+      elsif sc == Fixnum
+        sz = 1
+      end
+      if ic == Symbol
+        iz = 3
+      elsif ic == String
+        iz = 2
+      elsif ic == Fixnum
+        iz = 1
+      end
+      sz <=> iz
+    else
+      self.payload <=> item.payload
+    end
   end
 
-  # def == (item)
-  #   true
-  # end
+  def == (item)
+    if self.payload == item.payload
+      true
+    else
+      false
+    end
+  end
 
+  def === (item)
+    self.object_id === item.object_id
+  end
 end
