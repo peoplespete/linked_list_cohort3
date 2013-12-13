@@ -2,19 +2,24 @@
 class LinkedListItem
   include Comparable
 
-  @@count = 0
   def initialize(word)
-    @@count += 1
     @payload = word
-    @num = @@count
   end
+
+  # def changeLLI(lli)
+  #   self = lli
+  # end
 
   def payload
     @payload
   end
 
+  def payload= (newPayload)
+    @payload = newPayload
+  end
+
   def next_list_item= (item)
-    if self != item
+    if self.object_id != item.object_id
       @nextItem = item
     else
       raise ArgumentError
@@ -26,11 +31,7 @@ class LinkedListItem
   end
 
   def last?
-    if @@count == @num
-      true
-    else
-      false
-    end
+    next_list_item.nil?
   end
 
   def <=> (item)
