@@ -1,3 +1,5 @@
+# This is a project I made for class
+
 class LinkedList
   attr_reader :head, :current
   def initialize (*payload)
@@ -39,7 +41,6 @@ class LinkedList
   end
 
   def get (index, allLLI = nil)
-    # should return the item for that index
     if @head and (index >= 0)
       current = @head
       index.times do
